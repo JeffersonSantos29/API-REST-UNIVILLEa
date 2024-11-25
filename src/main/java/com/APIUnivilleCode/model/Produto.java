@@ -1,24 +1,32 @@
-package com.model;
-
-import org.springframework.data.annotation.Id;
-
+package com.APIUnivilleCode.model;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
 
 @Entity
+
+@Table(name = "Produto")
 public class Produto {
 
-    @Id
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto")
-    private Integer id;
+    private Long id;
+
     @Column(name = "nome_produto")
     private String nome_produto;
+
     @Column(name = "valor")
     private Integer valor;
-    public Integer getId() {
+
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNome_produto() {
@@ -33,7 +41,4 @@ public class Produto {
     public void setValor(Integer valor) {
         this.valor = valor;
     }
-
-    
-
 }
