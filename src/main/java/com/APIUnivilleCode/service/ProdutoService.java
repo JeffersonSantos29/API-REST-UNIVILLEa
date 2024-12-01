@@ -2,7 +2,6 @@ package com.APIUnivilleCode.service;
 
 import java.util.List;
 
-import org.apache.el.stream.Optional;
 import org.springframework.stereotype.Service;
 
 import com.APIUnivilleCode.model.Produto;
