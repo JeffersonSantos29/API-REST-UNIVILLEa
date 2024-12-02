@@ -22,6 +22,16 @@ public class ProdutoService {
     }
 
     public Produto criarProduto(Produto produto) {
+        if (produtoRepository.existsById(produto.getId())) {
+            throw new RuntimeException("Produto com ID " + produto.getId() + " já existe.");
+        }
+
+        if (produto.getNome_produto() == null || produto.getNome_produto().trim().isEmpty()) {
+            throw new RuntimeException("Nome do produto não pode ser vazio.");
+        }
+        if (produto.getValor() == null || produto.getValor() <= 0) {
+            throw new RuntimeException("Valor do produto deve ser maior que zero.");
+        }
         return produtoRepository.save(produto);
     }
 
@@ -29,6 +39,7 @@ public class ProdutoService {
         if (produtoRepository.existsById(id)) {
             produtoRepository.deleteById(id);
         } else {
+
             throw new RuntimeException("Produto com ID " + id + " não encontrado.");
         }
     }
